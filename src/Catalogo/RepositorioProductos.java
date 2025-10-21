@@ -50,11 +50,25 @@ public class RepositorioProductos {
                 .filter(p->p.getCategoria()!=null && p.getCategoria().getId()==cat.getId())
                 .collect(Collectors.toList());
     }
+<<<<<<< HEAD
    
     public Iterator<Producto> iterator() {
         return new ProductoIterator((List<Producto>) productos);
     }
  
+=======
+    public Producto clonarProducto(String codigoOriginal, String nuevoCodigo) {
+        Optional<Producto> opt = buscar(codigoOriginal);
+        if(opt.isPresent()){
+                
+         Producto clon = opt.get().clone();
+            clon.setCodigo(nuevoCodigo);
+            guardar(clon);
+            return clon;
+        }
+        return null;
+    }
+>>>>>>> proxy
 }
 
 
