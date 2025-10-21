@@ -16,6 +16,7 @@ import Catalogo.Producto;
 import Catalogo.RepositorioCategorias;
 import Catalogo.RepositorioProductos;
 import Catalogo.ServicioCatalogo;
+import Facturacion.ServicioFacturacionProxi;
 import java.io.UnsupportedEncodingException;
 
 import java.time.LocalDate;
@@ -40,8 +41,8 @@ public class App {
         ServicioCatalogo servCata = new ServicioCatalogo(repoCate, repoProd);
         ServicioClientes servClie = new ServicioClientes(repoClie);
         ServicioNotificaciones servNoti = new ServicioNotificaciones();
-        ServicioFacturacion servFact = new ServicioFacturacion(repoFact, servNoti);
-
+        ServicioFacturacion servFact = new ServicioFacturacionProxi(repoFact, servNoti);
+      
         seedDatos(servCata, servClie);
 
         while (true){

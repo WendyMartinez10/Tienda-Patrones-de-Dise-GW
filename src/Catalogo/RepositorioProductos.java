@@ -49,4 +49,15 @@ public class RepositorioProductos {
                 .filter(p->p.getCategoria()!=null && p.getCategoria().getId()==cat.getId())
                 .collect(Collectors.toList());
     }
+    public Producto clonarProducto(String codigoOriginal, String nuevoCodigo) {
+        Optional<Producto> opt = buscar(codigoOriginal);
+        if(opt.isPresent()){
+                
+         Producto clon = opt.get().clone();
+            clon.setCodigo(nuevoCodigo);
+            guardar(clon);
+            return clon;
+        }
+        return null;
+    }
 }
