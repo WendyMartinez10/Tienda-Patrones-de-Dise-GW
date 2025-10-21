@@ -24,7 +24,10 @@ public class ServicioFacturacion {
     }
 
     public Factura crearFactura(int numero, Cliente cliente){
-        Factura f = new Factura(numero, cliente);
+        Factura f = new Factura.FacturaBuilder()
+                .setNumero(numero)
+                .setCliente(cliente)
+                .build();
         repo.guardar(f);
         return f;
     }
